@@ -99,27 +99,15 @@ func main() {
 	blockchain.AddBlock("Second block after genesis")
 	blockchain.AddBlock("Third block after genesis")
 
-	fmt.Println("Blockchain valid?", blockchain.IsValid())
 	fmt.Println()
-
-	for _, block := range blockchain.Blocks {
-		fmt.Printf("Index: %d\n", block.Index)
-		fmt.Printf("Timestamp: %s\n", block.Timestamp)
-		fmt.Printf("Data: %s\n", block.Data)
-		fmt.Printf("PreviousHash: %s\n", block.PreviousHash)
-		fmt.Printf("Hash: %s\n", block.Hash)
-		fmt.Println("-----")
-	}
+	fmt.Println("=== BLOCKCHAIN ===")
+	printBlockchain(blockchain)
+	fmt.Println("Blockchain valid?", blockchain.IsValid())
 
 	// Tampering test
 	blockchain.Blocks[1].Data = "HACKED BLOCK DATA"
-
-	fmt.Println()
 	fmt.Println("After tampering...")
-	fmt.Println("Blockchain valid?", blockchain.IsValid())
-
 	fmt.Println("=== BLOCKCHAIN ===")
 	printBlockchain(blockchain)
-
 	fmt.Println("Blockchain valid?", blockchain.IsValid())
 }
